@@ -55,13 +55,13 @@ accelerator:
 
   #! Question: tanzunet username
   - name: tanzunetUsername
-    label: Tanzunet USERNAME
+    label: Tanzunet Username
     inputType: text
     defaultValue: 'tfynes-pivotal'
 
   #! Question: tanzunet password
   - name: tanzunetPassword
-    label: Tanzunet PASSSWORD
+    label: Tanzunet Password
     inputType: text
     defaultValue: 'tanzunet-password'
 
@@ -86,7 +86,7 @@ accelerator:
   - name: harborProject
     label: Harbor target project (repository) name
     inputType: text
-    defaultValue: "tap-packages"
+    defaultValue: "tanzu-packages"
 
 
 
@@ -108,19 +108,21 @@ engine:
       chain:
       - type: ReplaceText
         substitutions:
-        - text: HARBOR_NAMESPACE
-          with: "#harborNamespace"
+        - text: HARBOR_FQDN
+          with: "#harborFqdn"
+        - text: HARBOR_USERNAME
+          with: "#harborUsername"
+        - text: HARBOR_PASSWORD
+          with: "#harborPassword"
       - merge:
         - include: ["**"]
-          exclude: ['harbor/values.yaml']
-        - include: ['harbor/values.yaml']
+          exclude: ['/image-copy-direct.sh']
+        - include: ['/image-copy-direct.sh']
           chain:
-          - type: YTT 
-      - merge:
-        - include: ["**"]
-          exclude: ['harborcerts.yaml']
-        - include: ['harborcerts.yaml']
-          chain:
-          - type: YTT
+          - type: ReplaceText
+            substitutions:
+            - text: #DIRECT_COPY_TCE_COMMAND
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:2f538b69c866023b7d408cce6f0624c5662ee0703d8492e623b7fce10b6f840b --to-repo ' + #harborFqdn + '/tce-packages/cluster-essentials-bundle --include-non-distributable-layers'"
+            condition: "#mirrorTce"
 
 
