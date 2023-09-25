@@ -116,8 +116,8 @@ engine:
           with: "#harborPassword"
       - merge:
         - include: ["**"]
-          exclude: ['/image-copy-direct.sh']
-        - include: ['/image-copy-direct.sh']
+          exclude: ['image-copy-direct.sh']
+        - include: ['image-copy-direct.sh']
           chain:
           - type: ReplaceText
             substitutions:
