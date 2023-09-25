@@ -11,6 +11,7 @@ DIRECT_COPY_TCE_COMMAND
 #! imgpkg copy -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:2f538b69c866023b7d408cce6f0624c5662ee0703d8492e623b7fce10b6f840b --to-repo $IMGPKG_REGISTRY_HOSTNAME/tce-packages/cluster-essentials-bundle --include-non-distributable-layers
 
 #! copy tap packages to mirror registry
+DIRECT_COPY_TAP_COMMAND
 #! imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION        --to-repo $IMGPKG_REGISTRY_HOSTNAME/tap-packages --include-non-distributable-layers       
 
 #! copy tanzu data services to mirror registry

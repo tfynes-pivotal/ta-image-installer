@@ -130,4 +130,15 @@ engine:
                 with: "''"
             condition: "!#mirrorTce"
 
+          - type: ReplaceText
+            substitutions:
+            - text: DIRECT_COPY_TAP_COMMAND
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-repo #harborFqdn/#harborProject --include-non-distributable-layers '"
+            condition: "#mirrorTap"
+          - type: ReplaceText
+            substitutions:
+              - text: DIRECT_COPY_TAP_COMMAND
+                with: "''"
+            condition: "!#mirrorTap"
+
 
