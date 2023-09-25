@@ -71,10 +71,10 @@ accelerator:
     defaultValue: harbor.harborlab.fynesy.com
 
   # Question:  Harbor username
-  - name: harborPassword
-    label: Harbor Registry Password
+  - name: harborUsername
+    label: Harbor Registry Username
     inputType: text
-    defaultValue: 'Harbor1234!'
+    defaultValue: 'admin'
 
   # Question: Harbor password
   - name: harborPassword
