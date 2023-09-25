@@ -7,10 +7,11 @@ accelerator:
 
 
   options:
-  # - name: projectName
-  #   label: test
-  #   inputType: text
-  #   display: false
+  - name: projectName
+    label: test
+    inputType: text
+    display: true
+    defaultValue: ""
 
 
   - name: copyMode
