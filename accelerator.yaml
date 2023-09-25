@@ -155,7 +155,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: DIRECT_COPY_TDS_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/tdp-packages  --include-non-distributable-layers '"
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/tds-packages  --include-non-distributable-layers '"
             condition: "#mirrorTds"
           - type: ReplaceText
             substitutions:
