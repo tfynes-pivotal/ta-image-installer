@@ -10,7 +10,7 @@ accelerator:
   - name: projectName
     label: test
     inputType: text
-    display: true
+    display: false
     defaultValue: ""
 
 
