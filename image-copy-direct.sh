@@ -14,11 +14,13 @@ DIRECT_COPY_TCE_COMMAND
 DIRECT_COPY_TAP_COMMAND
 #! imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-repo $IMGPKG_REGISTRY_HOSTNAME/tap-packages --include-non-distributable-layers       
 
+#! copy tbs dependencies packages to mirror registry
 DIRECT_COPY_TBS_DEPS_COMMAND
 #! imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION   --to-repo=$IMGPKG_REGISTRY_HOSTNAME/tap-packages/tbs-full-deps
 
 
 #! copy tanzu data services to mirror registry
+DIRECT_COPY_TDS_COMMAND
 #! imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION  --to-repo $IMGPKG_REGISTRY_HOSTNAME/tds-packages/tds-packages --include-non-distributable-layers
 
 
