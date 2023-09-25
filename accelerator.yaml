@@ -7,14 +7,9 @@ accelerator:
 
 
   options:
+ 
+#! using 'projectName' as copyMode variable for aesthetic reasons
   - name: projectName
-    label: test
-    inputType: text
-    display: false
-    defaultValue: ""
-
-
-  - name: copyMode
     label: Direct to Target Registry
     description: Copy directly from Tanzunet to target Registry or via intermediary downloaded archive files on workstation
     inputType: radio
@@ -32,7 +27,7 @@ accelerator:
     display: true
     defaultValue: /tmp
     dependsOn:
-      name: copyMode
+      name: projectName
       value: copyIndirect
 
   - name: mirrorTce
