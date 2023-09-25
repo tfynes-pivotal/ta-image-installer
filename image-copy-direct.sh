@@ -12,12 +12,15 @@ DIRECT_COPY_TCE_COMMAND
 
 #! copy tap packages to mirror registry
 DIRECT_COPY_TAP_COMMAND
-#! imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION        --to-repo $IMGPKG_REGISTRY_HOSTNAME/tap-packages --include-non-distributable-layers       
+#! imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-repo $IMGPKG_REGISTRY_HOSTNAME/tap-packages --include-non-distributable-layers       
+
+DIRECT_COPY_TBS_DEPS_COMMAND
+#! imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION   --to-repo=$IMGPKG_REGISTRY_HOSTNAME/tap-packages/tbs-full-deps
+
 
 #! copy tanzu data services to mirror registry
 #! imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION  --to-repo $IMGPKG_REGISTRY_HOSTNAME/tds-packages/tds-packages --include-non-distributable-layers
 
-#! imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION   --to-repo=$IMGPKG_REGISTRY_HOSTNAME/tap-packages/tbs-full-deps
 
 #!imgpkg copy -b registry.tanzu.vmware.com/p-rabbitmq-for-kubernetes/tanzu-rabbitmq-package-repo:1.4.1      --to-tar=/Users/thomasfynes/PIVOTAL/TAP/tap15offline/rmq.tar
 

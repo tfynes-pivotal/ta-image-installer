@@ -133,7 +133,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: DIRECT_COPY_TAP_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + ' --include-non-distributable-layers '"
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/tap-packages  --include-non-distributable-layers '"
             condition: "#mirrorTap"
           - type: ReplaceText
             substitutions:
@@ -141,4 +141,13 @@ engine:
                 with: "''"
             condition: "!#mirrorTap"
 
-
+          - type: ReplaceText
+            substitutions:
+            - text: DIRECT_COPY_TBS_DEPS_COMMAND
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/tbs-full-deps  --include-non-distributable-layers '"
+            condition: "#mirrorTap"
+          - type: ReplaceText
+            substitutions:
+              - text: DIRECT_COPY_TBS_DEPS_COMMAND
+                with: "''"
+            condition: "!#mirrorTap"
