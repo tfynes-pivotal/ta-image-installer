@@ -7,7 +7,7 @@ export TDS_VERSION=1.7.0
 docker login registry.tanzu.vmware.com -u TANZUNET_USERNAME -p TANZUNET_PASSWORD
 
 #! copy tanzu cluster essentials assets to mirror registry
-#DIRECT_COPY_TCE_COMMAND
+DIRECT_COPY_TCE_COMMAND
 #! imgpkg copy -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:2f538b69c866023b7d408cce6f0624c5662ee0703d8492e623b7fce10b6f840b --to-repo $IMGPKG_REGISTRY_HOSTNAME/tce-packages/cluster-essentials-bundle --include-non-distributable-layers
 
 #! copy tap packages to mirror registry
