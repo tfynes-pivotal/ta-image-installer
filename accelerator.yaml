@@ -51,35 +51,39 @@ accelerator:
     inputType: checkbox
     defaultValue: true
 
-
-  # Question 6a-1. TanzuNet - username
   - name: tanzunetUsername
     label: Tanzunet USERNAME
     inputType: text
     defaultValue: 'tfynes-pivotal'
-    dependsOn:
-      name: platformRegistryLocation
-      value: tanzunetRegistrySelection
-  # Question 6a-2. TanzuNet - password
+
   - name: tanzunetPassword
     label: Tanzunet PASSSWORD
     inputType: text
     defaultValue: 'tanzunet-password'
-    dependsOn:
-      name: platformRegistryLocation
-      value: tanzunetRegistrySelection
 
   #! harborFQDN using reserved 'projectName' variable name for aesthetics
-  # Question 1. Harbor FQDN
   - name: harborFqdn
     label: Harbor Fully Qualified Hostname
     defaultValue: harbor.harborlab.fynesy.com
 
-  # Question 2. Harbor admin password
+
+  # Question 2. Harbor username
   - name: harborPassword
     label: Harbor Registry Password
     inputType: text
     defaultValue: 'Harbor1234!'
+
+  # Question 2. Harbor password
+  - name: harborPassword
+    label: Harbor Registry Password
+    inputType: text
+    defaultValue: 'Harbor1234!'
+
+  # Question: Harbor target 'project'
+  - name: harborProject
+    label: Harbor target project (repository) name
+    inputType: text
+    defaultValue: "tap-packages"
 
 
 
