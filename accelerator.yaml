@@ -4,7 +4,15 @@ accelerator:
   tags:
   - beta
 
+
+
   options:
+  - name: projectName
+    label: test
+    inputType: text
+    display: false
+
+
   - name: copyMode
     label: Direct to Target Registry
     description: Copy directly from Tanzunet to target Registry or via intermediary downloaded archive files on workstation
@@ -48,7 +56,22 @@ accelerator:
     defaultValue: true
 
 
-
+  # Question 6a-1. TanzuNet - username
+  - name: tanzunetUsername
+    label: Tanzunet USERNAME
+    inputType: text
+    defaultValue: 'tfynes-pivotal'
+    dependsOn:
+      name: platformRegistryLocation
+      value: tanzunetRegistrySelection
+  # Question 6a-2. TanzuNet - password
+  - name: tanzunetPassword
+    label: Tanzunet PASSSWORD
+    inputType: text
+    defaultValue: 'tanzunet-password'
+    dependsOn:
+      name: platformRegistryLocation
+      value: tanzunetRegistrySelection
 
   #! harborFQDN using reserved 'projectName' variable name for aesthetics
   # Question 1. Harbor FQDN
@@ -62,31 +85,7 @@ accelerator:
     inputType: text
     defaultValue: 'Harbor1234!'
 
-  - name: harborNamespace
-    label: Harbor install namespace
-    inputType: text
-    defaultValue: "harbor"
 
-  # Question 3. Harbor Ingress Certificate
-  - name: tlsCertificate
-    label: Harbor TLS Certificate
-    inputType: textarea
-    display: true
-    defaultValue: 'tls cert'
-
-  # Question 4. Harbor Ingress Private Key
-  - name: tlsPrivateKey
-    label: Harbor TLS Private Key 
-    inputType: textarea
-    display: true
-    defaultValue: 'tls key'
-
-  # Question 5. Harbor Disk Allocation
-  - name: harborStorageCapacity
-    label: Harbor Storage Capacity (GB)
-    inputType: text
-    display: true
-    defaultValue: '100'
 
 ####################################################################
 
