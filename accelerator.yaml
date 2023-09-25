@@ -5,7 +5,50 @@ accelerator:
   - beta
 
   options:
-  - name: 
+  - name: copyMode
+    label: Direct to Target Registry
+    description: Copy directly from Tanzunet to target Registry or via intermediary downloaded archive files on workstation
+    inputType: radio
+    display: true
+    defaultValue: copyDirect
+    choices:
+      - text: Copy direct from Tanzunet
+        value: copyDirect
+      - text: Download to local then copy to target registry (2 scripts generated)
+        value: copyIndirect
+
+  - name: localFolder
+    label: Local folder for Tanzunet downloads
+    inputType: text
+    display: true
+    defaultValue: /tmp
+    dependsOn:
+      name: copyMode
+      value: copyIndirect
+
+  - name: mirrorTce
+    label: Mirror Tanzu Cluster Essentials Package Repository
+    display: true
+    dataType: boolean
+    inputType: checkbox
+    defaultValue: true
+
+  - name: mirrorTap
+    label: Mirror Tanzu Application Platform Package Repository (including TBS dependencies)
+    display: true
+    dataType: boolean
+    inputType: checkbox
+    defaultValue: true
+
+  - name: mirrorTds
+    label: Mirror Tanzu Data Services Repository 
+    display: true
+    dataType: boolean
+    inputType: checkbox
+    defaultValue: true
+
+
+
 
   #! harborFQDN using reserved 'projectName' variable name for aesthetics
   # Question 1. Harbor FQDN
