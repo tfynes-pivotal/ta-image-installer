@@ -4,11 +4,9 @@ accelerator:
   tags:
   - beta
 
-
-
   options:
- 
-#! using 'projectName' as copyMode variable for aesthetic reasons
+  #! Question: copy direct or download first then push to harbor
+  #! using 'projectName' as copyMode variable for aesthetic reasons
   - name: projectName
     label: Direct to Target Registry
     description: Copy directly from Tanzunet to target Registry or via intermediary downloaded archive files on workstation
@@ -21,6 +19,7 @@ accelerator:
       - text: Download to local then copy to target registry (2 scripts generated)
         value: copyIndirect
 
+  #! Question: if indirect, local folder for archive downloads from tanzunet
   - name: localFolder
     label: Local folder for Tanzunet downloads
     inputType: text
@@ -30,13 +29,15 @@ accelerator:
       name: projectName
       value: copyIndirect
 
+  #! Question: copy TCE pakages
   - name: mirrorTce
     label: Mirror Tanzu Cluster Essentials Package Repository
     display: true
     dataType: boolean
     inputType: checkbox
     defaultValue: true
-
+  
+  #! Question: copy TAP (and TBS dependencies) pacakges
   - name: mirrorTap
     label: Mirror Tanzu Application Platform Package Repository (including TBS dependencies)
     display: true
@@ -44,6 +45,7 @@ accelerator:
     inputType: checkbox
     defaultValue: true
 
+  #! Question: copy TDS packages
   - name: mirrorTds
     label: Mirror Tanzu Data Services Repository 
     display: true
@@ -51,29 +53,30 @@ accelerator:
     inputType: checkbox
     defaultValue: true
 
+  #! Question: tanzunet username
   - name: tanzunetUsername
     label: Tanzunet USERNAME
     inputType: text
     defaultValue: 'tfynes-pivotal'
 
+  #! Question: tanzunet password
   - name: tanzunetPassword
     label: Tanzunet PASSSWORD
     inputType: text
     defaultValue: 'tanzunet-password'
 
-  #! harborFQDN using reserved 'projectName' variable name for aesthetics
+  #! Question: harborFQDN 
   - name: harborFqdn
     label: Harbor Fully Qualified Hostname
     defaultValue: harbor.harborlab.fynesy.com
 
-
-  # Question 2. Harbor username
+  # Question:  Harbor username
   - name: harborPassword
     label: Harbor Registry Password
     inputType: text
     defaultValue: 'Harbor1234!'
 
-  # Question 2. Harbor password
+  # Question: Harbor password
   - name: harborPassword
     label: Harbor Registry Password
     inputType: text
