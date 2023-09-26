@@ -62,7 +62,7 @@ accelerator:
   - name: tanzunetUsername
     label: Tanzunet Username
     inputType: text
-    defaultValue: 'tfynes-pivotal'
+    defaultValue: 'mfynes@pivotal.io'
 
   #! Question: tanzunet password
   - name: tanzunetPassword
