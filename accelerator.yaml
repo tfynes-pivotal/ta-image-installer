@@ -252,3 +252,7 @@ engine:
               - text: PUSH_TDS_COMMAND
                 with: "''"
             condition: "!#mirrorTds" 
+
+      - exclude: ['image-pull.sh']
+        include: ['**']
+        condition: "#projectName = 'copyDirect'"
