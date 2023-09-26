@@ -5,10 +5,15 @@ accelerator:
   - beta
 
   options:
-  #! Question: copy direct or download first then push to harbor
-  #! using 'projectName' as copyMode variable for aesthetic reasons
   - name: projectName
-    label: Direct to Target Registry
+    label: Script archive name
+    description: Accelerator generated script archive name 
+    display: true
+    inputType: text
+    defaultValue: tap-image-installer
+  #! Question: copy direct or download first then push to harbor
+  - name: copyMode
+    label: Tanzu Image Mirror Mode (Direct / Indirect)
     description: Copy directly from Tanzunet to target Registry or via intermediary downloaded archive files on workstation
     inputType: radio
     display: true
@@ -26,7 +31,7 @@ accelerator:
     display: true
     defaultValue: /tmp
     dependsOn:
-      name: projectName
+      name: copyMode
       value: copyIndirect
 
   #! Question: copy TCE pakages
@@ -260,12 +265,12 @@ engine:
 
   - exclude: ['image-pull.sh']
     include: ['**']
-    condition: "#projectName == 'copyDirect'"
+    condition: "#copyMode == 'copyDirect'"
 
   - exclude: ['image-push.sh']
     include: ['**']
-    condition: "#projectName == 'copyDirect'"
+    condition: "#copyMode == 'copyDirect'"
 
   - exclude: ['image-copy-direct.sh']
     include: ['**']
-    condition: "#projectName == 'copyIndirect'"
+    condition: "#copyMode == 'copyIndirect'"
