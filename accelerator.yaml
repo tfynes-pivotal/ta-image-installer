@@ -231,24 +231,24 @@ engine:
                 with: "''"
             condition: "!#mirrorTap" 
 
-          - type: ReplaceText
-            substitutions:
-            - text: PULL_TDS_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION --to-tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --include-non-distributable-layers '"
-            condition: "#mirrorTds"
-          - type: ReplaceText
-            substitutions:
-              - text: PULL_TDS_COMMAND
-                with: "''"
-            condition: "!#mirrorTds" 
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PULL_TDS_COMMAND
+          #     with: "'imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION --to-tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --include-non-distributable-layers '"
+          #   condition: "#mirrorTds"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PULL_TDS_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTds" 
 
-          - type: ReplaceText
-            substitutions:
-            - text: PUSH_TDS_COMMAND
-              with: "'imgpkg copy -tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tds-packages  --include-non-distributable-layers '"
-            condition: "#mirrorTds"
-          - type: ReplaceText
-            substitutions:
-              - text: PUSH_TDS_COMMAND
-                with: "''"
-            condition: "!#mirrorTds" 
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PUSH_TDS_COMMAND
+          #     with: "'imgpkg copy -tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tds-packages  --include-non-distributable-layers '"
+          #   condition: "#mirrorTds"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PUSH_TDS_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTds" 
