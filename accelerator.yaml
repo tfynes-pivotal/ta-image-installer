@@ -209,16 +209,16 @@ engine:
                 with: "''"
             condition: "!#mirrorTap"
 
-          - type: ReplaceText
-            substitutions:
-            - text: PULL_TBS_DEPS_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION --to-tar ' + #localFolder + '/' + #harborProject + '/tbs-full-deps-$TAP_VERSION.tar'"
-            condition: "#mirrorTap"
-          - type: ReplaceText
-            substitutions:
-              - text: PULL_TBS_DEPS_COMMAND
-                with: "''"
-            condition: "!#mirrorTap"
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PULL_TBS_DEPS_COMMAND
+          #     with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION --to-tar ' + #localFolder + '/' + #harborProject + '/tbs-full-deps-$TAP_VERSION.tar'"
+          #   condition: "#mirrorTap"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PULL_TBS_DEPS_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTap"
 
           # - type: ReplaceText
           #   substitutions:
