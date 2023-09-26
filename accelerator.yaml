@@ -253,6 +253,6 @@ engine:
                 with: "''"
             condition: "!#mirrorTds" 
 
-    - exclude: ['image-pull.sh']
-      include: ['**']
-      condition: "#projectName = 'copyDirect'"
+  - exclude: ['image-pull.sh']
+    include: ['**']
+    condition: "#projectName = 'copyDirect'"
