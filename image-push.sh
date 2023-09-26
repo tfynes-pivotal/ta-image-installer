@@ -4,8 +4,6 @@ export IMGPKG_REGISTRY_PASSWORD="HARBOR_PASSWORD"
 export TAP_VERSION=1.6.3
 export TDS_VERSION=1.7.0
 
-docker login registry.tanzu.vmware.com -u "TANZUNET_USERNAME" -p "TANZUNET_PASSWORD"
-
 #! copy tanzu cluster essentials assets to mirror registry
 PUSH_TCE_COMMAND
 
