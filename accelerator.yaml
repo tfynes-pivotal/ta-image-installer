@@ -274,3 +274,6 @@ engine:
   - exclude: ['image-copy-direct.sh']
     include: ['**']
     condition: "#copyMode == 'copyIndirect'"
+
+  - exclude: ['unused/**']
+    include: ['**']
