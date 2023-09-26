@@ -187,27 +187,27 @@ engine:
             condition: "!#mirrorTce" 
 
 
-          - type: ReplaceText
-            substitutions:
-            - text: PULL_TAP_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-tar ' + #localFolder + '/tap-packages/tap-packages-$TAP_VERSION.tar  --include-non-distributable-layers '"
-            condition: "#mirrorTap"
-          - type: ReplaceText
-            substitutions:
-              - text: PULL_TAP_COMMAND
-                with: "''"
-            condition: "!#mirrorTap"
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PULL_TAP_COMMAND
+          #     with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-tar ' + #localFolder + '/tap-packages/tap-packages-$TAP_VERSION.tar --include-non-distributable-layers '"
+          #   condition: "#mirrorTap"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PULL_TAP_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTap"
 
-          - type: ReplaceText
-            substitutions:
-            - text: PUSH_TAP_COMMAND
-              with: "'imgpkg copy --tar #localFolder + '/tap-packages/tap-packages-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tap-packages  --include-non-distributable-layers '"
-            condition: "#mirrorTap"
-          - type: ReplaceText
-            substitutions:
-              - text: PUSH_TAP_COMMAND
-                with: "''"
-            condition: "!#mirrorTap"
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PUSH_TAP_COMMAND
+          #     with: "'imgpkg copy --tar #localFolder + '/tap-packages/tap-packages-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tap-packages  --include-non-distributable-layers '"
+          #   condition: "#mirrorTap"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PUSH_TAP_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTap"
 
           # - type: ReplaceText
           #   substitutions:
