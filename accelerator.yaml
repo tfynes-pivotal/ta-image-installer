@@ -255,4 +255,4 @@ engine:
 
   - exclude: ['image-pull.sh']
     include: ['**']
-    condition: "#projectName = 'copyDirect'"
+    condition: "#projectName == 'copyDirect'"
