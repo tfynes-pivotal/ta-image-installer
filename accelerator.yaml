@@ -255,7 +255,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: PUSH_TDS_COMMAND
-              with: "'imgpkg copy -tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + ' --include-non-distributable-layers '"
+              with: "'imgpkg copy -tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tds-packages  --include-non-distributable-layers '"
             condition: "#mirrorTds"
           - type: ReplaceText
             substitutions:
