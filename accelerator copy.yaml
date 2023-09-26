@@ -116,8 +116,8 @@ engine:
           with: "#harborPassword"
       - merge:
         - include: ["**"]
-          exclude: ['*.sh']
-        - include: ['*.sh']
+          exclude: ['image-copy-direct.sh']
+        - include: ['image-copy-direct.sh']
           chain:
           - type: ReplaceText
             substitutions:
@@ -185,3 +185,70 @@ engine:
               - text: PUSH_TCE_COMMAND
                 with: "''"
             condition: "!#mirrorTce" 
+
+
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PULL_TAP_COMMAND
+          #     with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-tar ' + #localFolder + '/tap-packages/tap-packages-$TAP_VERSION.tar --include-non-distributable-layers '"
+          #   condition: "#mirrorTap"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PULL_TAP_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTap"
+
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PUSH_TAP_COMMAND
+          #     with: "'imgpkg copy --tar #localFolder + '/tap-packages/tap-packages-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tap-packages  --include-non-distributable-layers '"
+          #   condition: "#mirrorTap"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PUSH_TAP_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTap"
+
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PULL_TBS_DEPS_COMMAND
+          #     with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION --to-tar ' + #localFolder + '/' + #harborProject + '/tbs-full-deps-$TAP_VERSION.tar'"
+          #   condition: "#mirrorTap"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PULL_TBS_DEPS_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTap"
+
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PUSH_TBS_DEPS_COMMAND
+          #     with: "'imgpkg copy --tar ' + #localFolder + '/' + #harborProject + '/tbs-full-deps-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tbs-full-deps'"
+          #   condition: "#mirrorTap"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PUSH_TBS_DEPS_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTap" 
+
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PULL_TDS_COMMAND
+          #     with: "'imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION --to-tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --include-non-distributable-layers '"
+          #   condition: "#mirrorTds"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PULL_TDS_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTds" 
+
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PUSH_TDS_COMMAND
+          #     with: "'imgpkg copy -tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tds-packages  --include-non-distributable-layers '"
+          #   condition: "#mirrorTds"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PUSH_TDS_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTds" 
