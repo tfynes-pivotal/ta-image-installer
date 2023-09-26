@@ -162,3 +162,93 @@ engine:
               - text: DIRECT_COPY_TDS_COMMAND
                 with: "''"
             condition: "!#mirrorTds" 
+
+
+          - type: ReplaceText
+            substitutions:
+            - text: PULL_TCE_COMMAND
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:2f538b69c866023b7d408cce6f0624c5662ee0703d8492e623b7fce10b6f840b --to-tar ' + #localFolder + '/cluster-essentials-bundle-' + $TAP_VERSION + '.tar --include-non-distributable-layers '"
+            condition: "#mirrorTce"
+          - type: ReplaceText
+            substitutions:
+              - text: PULL_TCE_COMMAND
+                with: "''"
+            condition: "!#mirrorTce" 
+
+          - type: ReplaceText
+            substitutions:
+            - text: PUSH_TCE_COMMAND
+              with: "'imgpkg copy --tar #localFolder + '/cluster-essentials-bundle-' + $TAP_VERSION + '.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tce-packages/cluster-essentials-bundle  --include-non-distributable-layers '"
+            condition: "#mirrorTce"
+          - type: ReplaceText
+            substitutions:
+              - text: PUSH_TCE_COMMAND
+                with: "''"
+            condition: "!#mirrorTce" 
+
+
+          - type: ReplaceText
+            substitutions:
+            - text: PULL_TAP_COMMAND
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-tar ' + #localFolder + '/tap-packages/tap-packages-$TAP_VERSION.tar  --include-non-distributable-layers '"
+            condition: "#mirrorTap"
+          - type: ReplaceText
+            substitutions:
+              - text: PULL_TAP_COMMAND
+                with: "''"
+            condition: "!#mirrorTap"
+
+          - type: ReplaceText
+            substitutions:
+            - text: PUSH_TAP_COMMAND
+              with: "'imgpkg copy --tar #localFolder + '/tap-packages/tap-packages-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tap-packages  --include-non-distributable-layers '"
+            condition: "#mirrorTap"
+          - type: ReplaceText
+            substitutions:
+              - text: PUSH_TAP_COMMAND
+                with: "''"
+            condition: "!#mirrorTap"
+
+          - type: ReplaceText
+            substitutions:
+            - text: PULL_TBS_DEPS_COMMAND
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION --to-tar ' + #localFolder + '/' + #harborProject + '/tbs-full-deps-$TAP_VERSION.tar'"
+            condition: "#mirrorTap"
+          - type: ReplaceText
+            substitutions:
+              - text: PULL_TBS_DEPS_COMMAND
+                with: "''"
+            condition: "!#mirrorTap"
+
+          - type: ReplaceText
+            substitutions:
+            - text: PUSH_TBS_DEPS_COMMAND
+              with: "'imgpkg copy --tar ' + #localFolder + '/' + #harborProject + '/tbs-full-deps-$TAP_VERSION.tar' --to-repo ' + #harborFqdn + '/' + #harborProject + '/tbs-full-deps'"
+            condition: "#mirrorTap"
+          - type: ReplaceText
+            substitutions:
+              - text: PUSH_TBS_DEPS_COMMAND
+                with: "''"
+            condition: "!#mirrorTap" 
+
+          - type: ReplaceText
+            substitutions:
+            - text: PULL_TDS_COMMAND
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION --to-tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --include-non-distributable-layers '"
+            condition: "#mirrorTds"
+          - type: ReplaceText
+            substitutions:
+              - text: PULL_TDS_COMMAND
+                with: "''"
+            condition: "!#mirrorTds" 
+
+          - type: ReplaceText
+            substitutions:
+            - text: PUSH_TDS_COMMAND
+              with: "'imgpkg copy -tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tds-packages  --include-non-distributable-layers '"
+            condition: "#mirrorTds"
+          - type: ReplaceText
+            substitutions:
+              - text: PUSH_TDS_COMMAND
+                with: "''"
+            condition: "!#mirrorTds" 

@@ -7,21 +7,21 @@ export TDS_VERSION=1.7.0
 docker login registry.tanzu.vmware.com -u TANZUNET_USERNAME -p TANZUNET_PASSWORD
 
 #! copy tanzu cluster essentials assets to mirror registry
-DIRECT_COPY_TCE_COMMAND
+PUSH_TCE_COMMAND
 #! imgpkg copy --tar /tmp/cluster-essentials-bundle-1.6.1.tar --to-repo $IMGPKG_REGISTRY_HOSTNAME/tce-packages/cluster-essentials-bundle --include-non-distributable-layers
 
 #! copy tap packages to mirror registry
-DIRECT_COPY_TAP_COMMAND
+PUSH_TAP_COMMAND
 #! imgpkg copy --tar /tmp/tap-packages-$TAP_VERSION.tar  --to-repo $IMGPKG_REGISTRY_HOSTNAME/tap-packages --include-non-distributable-layers       
 
 
 #! copy tbs dependencies packages to mirror registry
-DIRECT_COPY_TBS_DEPS_COMMAND
+PUSH_TBS_DEPS_COMMAND
 #! imgpkg copy --tar /tmp/tap-packages/tbs-full-deps-$TAP_VERSION.tar --to-repo=$IMGPKG_REGISTRY_HOSTNAME/tap-packages/tbs-full-deps
 
 
 #! copy tanzu data services to mirror registry
-DIRECT_COPY_TDS_COMMAND
+PUSH_TDS_COMMAND
 #! imgpkg copy --tar /tmp/tds-packages/tds-packages-$TDS_VERSION.tar  --to-repo $IMGPKG_REGISTRY_HOSTNAME/tds-packages/tds-packages --include-non-distributable-layers
 
 
