@@ -220,16 +220,16 @@ engine:
                 with: "''"
             condition: "!#mirrorTap"
 
-          - type: ReplaceText
-            substitutions:
-            - text: PUSH_TBS_DEPS_COMMAND
-              with: "'imgpkg copy --tar ' + #localFolder + '/' + #harborProject + '/tbs-full-deps-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tbs-full-deps'"
-            condition: "#mirrorTap"
-          - type: ReplaceText
-            substitutions:
-              - text: PUSH_TBS_DEPS_COMMAND
-                with: "''"
-            condition: "!#mirrorTap" 
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PUSH_TBS_DEPS_COMMAND
+          #     with: "'imgpkg copy --tar ' + #localFolder + '/' + #harborProject + '/tbs-full-deps-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tbs-full-deps'"
+          #   condition: "#mirrorTap"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PUSH_TBS_DEPS_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTap" 
 
           # - type: ReplaceText
           #   substitutions:
