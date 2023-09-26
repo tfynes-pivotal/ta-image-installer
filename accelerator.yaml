@@ -164,24 +164,24 @@ engine:
             condition: "!#mirrorTds" 
 
 
-          - type: ReplaceText
-            substitutions:
-            - text: PULL_TCE_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:2f538b69c866023b7d408cce6f0624c5662ee0703d8492e623b7fce10b6f840b --to-tar ' + #localFolder + '/cluster-essentials-bundle-' + $TAP_VERSION + '.tar --include-non-distributable-layers '"
-            condition: "#mirrorTce"
-          - type: ReplaceText
-            substitutions:
-              - text: PULL_TCE_COMMAND
-                with: "''"
-            condition: "!#mirrorTce" 
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PULL_TCE_COMMAND
+          #     with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:2f538b69c866023b7d408cce6f0624c5662ee0703d8492e623b7fce10b6f840b --to-tar ' + #localFolder + '/cluster-essentials-bundle-' + $TAP_VERSION + '.tar --include-non-distributable-layers '"
+          #   condition: "#mirrorTce"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PULL_TCE_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTce" 
 
-          - type: ReplaceText
-            substitutions:
-            - text: PUSH_TCE_COMMAND
-              with: "'imgpkg copy --tar #localFolder + '/cluster-essentials-bundle-' + $TAP_VERSION + '.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tce-packages/cluster-essentials-bundle  --include-non-distributable-layers '"
-            condition: "#mirrorTce"
-          - type: ReplaceText
-            substitutions:
-              - text: PUSH_TCE_COMMAND
-                with: "''"
-            condition: "!#mirrorTce" 
+          # - type: ReplaceText
+          #   substitutions:
+          #   - text: PUSH_TCE_COMMAND
+          #     with: "'imgpkg copy --tar #localFolder + '/cluster-essentials-bundle-' + $TAP_VERSION + '.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tce-packages/cluster-essentials-bundle  --include-non-distributable-layers '"
+          #   condition: "#mirrorTce"
+          # - type: ReplaceText
+          #   substitutions:
+          #     - text: PUSH_TCE_COMMAND
+          #       with: "''"
+          #   condition: "!#mirrorTce" 
