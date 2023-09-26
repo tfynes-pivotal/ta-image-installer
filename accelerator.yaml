@@ -258,14 +258,14 @@ engine:
                 with: "''"
             condition: "!#mirrorTds" 
 
-    - exclude: ['image-pull.sh']
-      include: ['**']
-      condition: "#projectName == 'copyDirect'"
+  - exclude: ['image-pull.sh']
+    include: ['**']
+    condition: "#projectName == 'copyDirect'"
 
-    - exclude: ['image-push.sh']
-      include: ['**']
-      condition: "#projectName == 'copyDirect'"
+  - exclude: ['image-push.sh']
+    include: ['**']
+    condition: "#projectName == 'copyDirect'"
 
-    - exclude: ['image-copy-direct.sh']
-      include: ['**']
-      condition: "#projectName == 'copyIndirect'"
+  - exclude: ['image-copy-direct.sh']
+    include: ['**']
+    condition: "#projectName == 'copyIndirect'"
