@@ -1,5 +1,5 @@
-export TAP_VERSION=1.6.3
-export TDS_VERSION=1.7.0
+export TAP_VERSION=TAP_VERSION_SELECTED
+export TDS_VERSION=TDS_VERSION_SELECTED
 
 docker login registry.tanzu.vmware.com -u "TANZUNET_USERNAME" -p "TANZUNET_PASSWORD"
 
