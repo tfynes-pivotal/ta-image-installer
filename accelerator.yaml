@@ -11,6 +11,11 @@ accelerator:
     display: true
     inputType: text
     defaultValue: tap-image-installer
+
+  
+
+
+
   #! Question: copy direct or download first then push to harbor
   - name: copyMode
     label: Tanzu Image Mirror Mode (Direct / Indirect)
@@ -50,6 +55,15 @@ accelerator:
     inputType: checkbox
     defaultValue: true
 
+  - name: tapVersion
+    label: Tanzu Application Platform Package Repository Version
+    display: true
+    inputType: text
+    defaultValue: 1.6.3
+    dependsOn:
+      name: mirrorTap
+      value: true
+
   #! Question: copy TDS packages
   - name: mirrorTds
     label: Mirror Tanzu Data Services Repository 
@@ -57,6 +71,15 @@ accelerator:
     dataType: boolean
     inputType: checkbox
     defaultValue: true
+
+  - name: tdsVersion
+    label: Tanzu Data Services Package Repository Version
+    display: true
+    inputType: text
+    defaultValue: 1.7.0
+    dependsOn:
+      name: mirrorTds
+      value: true
 
   #! Question: tanzunet username
   - name: tanzunetUsername
