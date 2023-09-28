@@ -1,7 +1,10 @@
 export TAP_VERSION=TAP_VERSION_SELECTED
 export TDS_VERSION=TDS_VERSION_SELECTED
+export IMGPKG_REGISTRY_HOSTNAME="registry.tanzu.vmware.com" 
+export IMGPKG_REGISTRY_USERNAME="TANZUNET_USERNAME"
+export IMGPKG_REGISTRY_PASSWORD="TANZUNET_PASSWORD"
 
-docker login registry.tanzu.vmware.com -u "TANZUNET_USERNAME" -p "TANZUNET_PASSWORD"
+#docker login registry.tanzu.vmware.com -u "TANZUNET_USERNAME" -p "TANZUNET_PASSWORD"
 
 #! copy tanzu cluster essentials assets to mirror registry
 PULL_TCE_COMMAND
