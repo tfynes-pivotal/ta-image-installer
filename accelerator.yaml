@@ -168,10 +168,10 @@ engine:
             - text: TEST_COMMAND
               with: "  'export IMGPKG_REGISTRY_HOSTNAME_0=registry.tanzu.vmware.com ; ' \ 
                      + 'export IMGPKG_REGISTRY_USERNAME_0=' + #tanzunetUsername + ' ; ' \
-                     + 'export IMGPKG_REGISTRY_PASSWORD_0=' + #tanzunetPassword + ' ; ' \
+                     + 'export IMGPKG_REGISTRY_PASSWORD_0=''' + #tanzunetPassword + ''' ; ' \
                      + 'export IMGPKG_REGISTRY_HOSTNAME_1=' + #harborFqdn       + ' ; ' \ 
                      + 'export IMGPKG_REGISTRY_USERNAME_1=' + #harborUsername   + ' ; ' \
-                     + 'export IMGPKG_REGISTRY_PASSWORD_1=' + #harborPassword   + ' ; ' \
+                     + 'export IMGPKG_REGISTRY_PASSWORD_1=''' + #harborPassword   + ''' ; ' \
                      + 'imgpkg copy -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:2f538b69c866023b7d408cce6f0624c5662ee0703d8492e623b7fce10b6f840b --to-repo ' + #harborFqdn + '/' + #harborProject + '/tce-packages/cluster-essentials-bundle --include-non-distributable-layers'"
             condition: "#mirrorTce"
           - type: ReplaceText
