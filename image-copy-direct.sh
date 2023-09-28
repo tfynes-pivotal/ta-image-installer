@@ -17,3 +17,5 @@ DIRECT_COPY_TBS_DEPS_COMMAND
 
 #! copy tanzu data services to mirror registry
 DIRECT_COPY_TDS_COMMAND
+
+# TEST_COMMAND
