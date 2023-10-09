@@ -1,5 +1,6 @@
 export TAP_VERSION=TAP_VERSION_SELECTED
 export TDS_VERSION=TDS_VERSION_SELECTED
+export RMQ_VERSION=RMQ_VERSION_SELECTED
 export IMGPKG_REGISTRY_HOSTNAME="registry.tanzu.vmware.com" 
 export IMGPKG_REGISTRY_USERNAME="TANZUNET_USERNAME"
 export IMGPKG_REGISTRY_PASSWORD="TANZUNET_PASSWORD"
@@ -17,3 +18,6 @@ PULL_TBS_DEPS_COMMAND
 
 #! copy tanzu data services to mirror registry
 PULL_TDS_COMMAND
+
+#! copy tanzu rabbitmq to mirror registry
+PULL_RMQ_COMMAND

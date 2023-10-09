@@ -77,6 +77,23 @@ accelerator:
       name: mirrorTds
       value: true
 
+  #! Question: copy RMQ packages
+  - name: mirrorRmq
+    label: Mirror RabbitMQ Services Repository 
+    display: true
+    dataType: boolean
+    inputType: checkbox
+    defaultValue: true
+
+  - name: rmqVersion
+    label: TDS Package Repository Version
+    display: true
+    inputType: text
+    defaultValue: 1.5.1
+    dependsOn:
+      name: mirrorRmq
+      value: true
+
   #! Question: tanzunet username
   - name: tanzunetUsername
     label: Tanzunet Username
@@ -146,6 +163,8 @@ engine:
           with: "#tapVersion"
         - text: TDS_VERSION_SELECTED
           with: "#tdsVersion"
+        - text: RMQ_VERSION_SELECTED
+          with: "#rmqVersion"
         
       - merge:
         - include: ["**"]
@@ -195,6 +214,17 @@ engine:
               - text: DIRECT_COPY_TDS_COMMAND
                 with: "''"
             condition: "!#mirrorTds" 
+
+          - type: ReplaceText
+            substitutions:
+            - text: DIRECT_COPY_RMQ_COMMAND
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/p-rabbitmq-for-kubernetes/tanzu-rabbitmq-package-repo:$RMQ_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/rmq-packages  --include-non-distributable-layers '"
+            condition: "#mirrorRmq"
+          - type: ReplaceText
+            substitutions:
+              - text: DIRECT_COPY_RMQ_COMMAND
+                with: "''"
+            condition: "!#mirrorRmq" 
 
 
           - type: ReplaceText
@@ -285,6 +315,28 @@ engine:
               - text: PUSH_TDS_COMMAND
                 with: "''"
             condition: "!#mirrorTds" 
+
+          - type: ReplaceText
+            substitutions:
+            - text: PULL_RMQ_COMMAND
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/p-rabbitmq-for-kubernetes/tanzu-rabbitmq-package-repo:$RMQ_VERSION --to-tar ' + #localFolder + '/rmq-packages-$RMQ_VERSION.tar --include-non-distributable-layers '"
+            condition: "#mirrorRmq"
+          - type: ReplaceText
+            substitutions:
+              - text: PULL_RMQ_COMMAND
+                with: "''"
+            condition: "!#mirrorRmq" 
+
+          - type: ReplaceText
+            substitutions:
+            - text: PUSH_RMQ_COMMAND
+              with: "'imgpkg copy --tar ' + #localFolder + '/rmq-packages-$RMQ_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/rmq-packages  --include-non-distributable-layers '"
+            condition: "#mirrorRmq"
+          - type: ReplaceText
+            substitutions:
+              - text: PUSH_RMQ_COMMAND
+                with: "''"
+            condition: "!#mirrorRmq" 
 
 #! provide command to deploy TCE from mirror if TCE assets mirror, otherwise remove that placeholder
           - type: ReplaceText
