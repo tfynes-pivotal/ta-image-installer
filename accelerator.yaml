@@ -191,7 +191,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: DIRECT_COPY_TAP_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/tap-packages  --include-non-distributable-layers '"
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/tap-packages  --include-non-distributable-layers IGNORE_TLS_ERRORS'"
             condition: "#mirrorTap"
           - type: ReplaceText
             substitutions:
@@ -202,7 +202,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: DIRECT_COPY_TBS_DEPS_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/tbs-full-deps'"
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/tbs-full-deps IGNORE_TLS_ERRORS'"
             condition: "#mirrorTap"
           - type: ReplaceText
             substitutions:
@@ -213,7 +213,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: DIRECT_COPY_TDS_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/tds-packages  --include-non-distributable-layers '"
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/tds-packages  --include-non-distributable-layers IGNORE_TLS_ERRORS'"
             condition: "#mirrorTds"
           - type: ReplaceText
             substitutions:
@@ -224,7 +224,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: DIRECT_COPY_RMQ_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/p-rabbitmq-for-kubernetes/tanzu-rabbitmq-package-repo:$RMQ_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/rmq-packages  --include-non-distributable-layers '"
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/p-rabbitmq-for-kubernetes/tanzu-rabbitmq-package-repo:$RMQ_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/rmq-packages  --include-non-distributable-layers IGNORE_TLS_ERRORS'"
             condition: "#mirrorRmq"
           - type: ReplaceText
             substitutions:
@@ -236,7 +236,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: PULL_TCE_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:2f538b69c866023b7d408cce6f0624c5662ee0703d8492e623b7fce10b6f840b --to-tar ' + #localFolder + '/cluster-essentials-bundle-$TAP_VERSION.tar --include-non-distributable-layers '"
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:2f538b69c866023b7d408cce6f0624c5662ee0703d8492e623b7fce10b6f840b --to-tar ' + #localFolder + '/cluster-essentials-bundle-$TAP_VERSION.tar --include-non-distributable-layers IGNORE_TLS_ERRORS'"
             condition: "#mirrorTce"
           - type: ReplaceText
             substitutions:
@@ -247,7 +247,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: PUSH_TCE_COMMAND
-              with: "'imgpkg copy --tar ' + #localFolder + '/cluster-essentials-bundle-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/cluster-essentials-bundle  --include-non-distributable-layers '"
+              with: "'imgpkg copy --tar ' + #localFolder + '/cluster-essentials-bundle-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/cluster-essentials-bundle  --include-non-distributable-layers IGNORE_TLS_ERRORS'"
             condition: "#mirrorTce"
           - type: ReplaceText
             substitutions:
@@ -259,7 +259,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: PULL_TAP_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-tar ' + #localFolder + '/tap-packages-$TAP_VERSION.tar --include-non-distributable-layers '"
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$TAP_VERSION --to-tar ' + #localFolder + '/tap-packages-$TAP_VERSION.tar --include-non-distributable-layers IGNORE_TLS_ERRORS'"
             condition: "#mirrorTap"
           - type: ReplaceText
             substitutions:
@@ -270,7 +270,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: PUSH_TAP_COMMAND
-              with: "'imgpkg copy --tar ' + #localFolder + '/tap-packages-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tap-packages  --include-non-distributable-layers '"
+              with: "'imgpkg copy --tar ' + #localFolder + '/tap-packages-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tap-packages  --include-non-distributable-layers IGNORE_TLS_ERRORS'"
             condition: "#mirrorTap"
           - type: ReplaceText
             substitutions:
@@ -281,7 +281,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: PULL_TBS_DEPS_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION --to-tar ' + #localFolder + '/tbs-full-deps-$TAP_VERSION.tar'"
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:$TAP_VERSION --to-tar ' + #localFolder + '/tbs-full-deps-$TAP_VERSION.tar IGNORE_TLS_ERRORS'"
             condition: "#mirrorTap"
           - type: ReplaceText
             substitutions:
@@ -292,7 +292,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: PUSH_TBS_DEPS_COMMAND
-              with: "'imgpkg copy --tar ' + #localFolder + '/tbs-full-deps-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tbs-full-deps'"
+              with: "'imgpkg copy --tar ' + #localFolder + '/tbs-full-deps-$TAP_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tbs-full-deps IGNORE_TLS_ERRORS'"
             condition: "#mirrorTap"
           - type: ReplaceText
             substitutions:
@@ -303,7 +303,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: PULL_TDS_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION --to-tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --include-non-distributable-layers '"
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/packages-for-vmware-tanzu-data-services/tds-packages:$TDS_VERSION --to-tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --include-non-distributable-layers IGNORE_TLS_ERRORS'"
             condition: "#mirrorTds"
           - type: ReplaceText
             substitutions:
@@ -314,7 +314,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: PUSH_TDS_COMMAND
-              with: "'imgpkg copy --tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tds-packages  --include-non-distributable-layers '"
+              with: "'imgpkg copy --tar ' + #localFolder + '/tds-packages-$TDS_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tds-packages  --include-non-distributable-layers IGNORE_TLS_ERRORS'"
             condition: "#mirrorTds"
           - type: ReplaceText
             substitutions:
@@ -325,7 +325,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: PULL_RMQ_COMMAND
-              with: "'imgpkg copy -b registry.tanzu.vmware.com/p-rabbitmq-for-kubernetes/tanzu-rabbitmq-package-repo:$RMQ_VERSION --to-tar ' + #localFolder + '/rmq-packages-$RMQ_VERSION.tar --include-non-distributable-layers '"
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/p-rabbitmq-for-kubernetes/tanzu-rabbitmq-package-repo:$RMQ_VERSION --to-tar ' + #localFolder + '/rmq-packages-$RMQ_VERSION.tar --include-non-distributable-layers IGNORE_TLS_ERRORS'"
             condition: "#mirrorRmq"
           - type: ReplaceText
             substitutions:
@@ -336,7 +336,7 @@ engine:
           - type: ReplaceText
             substitutions:
             - text: PUSH_RMQ_COMMAND
-              with: "'imgpkg copy --tar ' + #localFolder + '/rmq-packages-$RMQ_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/rmq-packages  --include-non-distributable-layers '"
+              with: "'imgpkg copy --tar ' + #localFolder + '/rmq-packages-$RMQ_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/rmq-packages  --include-non-distributable-layers IGNORE_TLS_ERRORS'"
             condition: "#mirrorRmq"
           - type: ReplaceText
             substitutions:
