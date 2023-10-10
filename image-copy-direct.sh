@@ -21,8 +21,8 @@ DIRECT_COPY_TAP_COMMAND
 DIRECT_COPY_TBS_DEPS_COMMAND
 
 #! copy tanzu data services to mirror registry
-DIRECT_COPY_TDS_COMMAN
+DIRECT_COPY_TDS_COMMAND
 
 #! copy tanzu rabbitmq to mirror registry
-DIRECT_COPY_RMQ_COMMANDD
+DIRECT_COPY_RMQ_COMMAND
 
