@@ -55,7 +55,7 @@ accelerator:
     label: TAP Package Repository Version
     display: true
     inputType: text
-    defaultValue: 1.6.3
+    defaultValue: 1.6.4
     dependsOn:
       name: mirrorTap
       value: true
@@ -72,7 +72,7 @@ accelerator:
     label: TDS Package Repository Version
     display: true
     inputType: text
-    defaultValue: 1.7.0
+    defaultValue: 1.12.0
     dependsOn:
       name: mirrorTds
       value: true
