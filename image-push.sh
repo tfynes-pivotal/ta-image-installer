@@ -19,3 +19,6 @@ PUSH_TDS_COMMAND
 
 #! copy tanzu rabbitmq to mirror registry
 PUSH_RMQ_COMMAND
+
+#! copy tanzu korifi to mirror registry
+PUSH_KORIFI_COMMAND
