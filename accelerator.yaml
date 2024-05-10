@@ -94,6 +94,23 @@ accelerator:
       name: mirrorRmq
       value: true
 
+  #! Question: copy TAS-adapter packages
+  - name: mirrorKorifi
+    label: Mirror TAS-adapter Services Repository 
+    display: true
+    dataType: boolean
+    inputType: checkbox
+    defaultValue: true
+
+  - name: korifiVersion
+    label: TAS-Adapter Package Repository Version
+    display: true
+    inputType: text
+    defaultValue: 1.3.1
+    dependsOn:
+      name: mirrorKorifi
+      value: true    
+
   #! Question: tanzunet username
   - name: tanzunetUsername
     label: Tanzunet Username
@@ -171,6 +188,8 @@ engine:
           with: "#tdsVersion"
         - text: RMQ_VERSION_SELECTED
           with: "#rmqVersion"
+        - text: KORIFI_VERSION_SELECTED
+          with: "#korifiVersion"
         
       - merge:
         - include: ["**"]
@@ -231,6 +250,24 @@ engine:
               - text: DIRECT_COPY_RMQ_COMMAND
                 with: "''"
             condition: "!#mirrorRmq" 
+
+
+#! imgpkg copy -b registry.tanzu.vmware.com/app-service-adapter/tas-adapter-package-repo:1.3.1 --to-tar /Users/thomasfynes/Downloads/tanzu191/tas-adapter-package-repo:1.3.1.tar
+#! imgpkg copy --tar /Users/thomasfynes/Downloads/tanzu191/tas-adapter-package-repo:1.3.1.tar --to-repo harbor.harborlab.fynesy.net/tanzu191-packages/tas-adapter-package-repo
+          - type: ReplaceText
+            substitutions:
+            - text: DIRECT_COPY_KORIFI_COMMAND
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/app-service-adapter/tas-adapter-package-repo:$KORIFI_VERSION --to-repo ' + #harborFqdn + '/' + #harborProject + '/tas-adapter-package-repo  --include-non-distributable-layers IGNORE_TLS_ERRORS'"
+            condition: "#mirrorKorifi"
+          - type: ReplaceText
+            substitutions:
+              - text: DIRECT_COPY_KORIFI_COMMAND
+                with: "''"
+            condition: "!#mirrorKorifi" 
+
+
+
+
 
 
           - type: ReplaceText
@@ -343,6 +380,30 @@ engine:
               - text: PUSH_RMQ_COMMAND
                 with: "''"
             condition: "!#mirrorRmq" 
+
+#! imgpkg copy -b registry.tanzu.vmware.com/app-service-adapter/tas-adapter-package-repo:1.3.1 --to-tar /Users/thomasfynes/Downloads/tanzu191/tas-adapter-package-repo:1.3.1.tar
+#! imgpkg copy --tar /Users/thomasfynes/Downloads/tanzu191/tas-adapter-package-repo:1.3.1.tar --to-repo harbor.harborlab.fynesy.net/tanzu191-packages/tas-adapter-package-repo
+          - type: ReplaceText
+            substitutions:
+            - text: PULL_KORIFI_COMMAND
+              with: "'imgpkg copy -b registry.tanzu.vmware.com/app-service-adapter/tas-adapter-package-repo:$KORIFI_VERSION --to-tar ' + #localFolder + '/tas-adapter-package-repo-$KORIFI_VERSION.tar --include-non-distributable-layers IGNORE_TLS_ERRORS'"
+            condition: "#mirrorKorifi"
+          - type: ReplaceText
+            substitutions:
+              - text: PULL_KORIFI_COMMAND
+                with: "''"
+            condition: "!#mirrorKorifi" 
+
+          - type: ReplaceText
+            substitutions:
+            - text: PUSH_KORIFI_COMMAND
+              with: "'imgpkg copy --tar ' + #localFolder + '/tas-adapter-package-repo-$KORIFI_VERSION.tar --to-repo ' + #harborFqdn + '/' + #harborProject + '/tas-adapter-package-repo  --include-non-distributable-layers IGNORE_TLS_ERRORS'"
+            condition: "#mirrorKorifi"
+          - type: ReplaceText
+            substitutions:
+              - text: PUSH_KORIFI_COMMAND
+                with: "''"
+            condition: "!#mirrorKorifi" 
 
 #! provide command to deploy TCE from mirror if TCE assets mirror, otherwise remove that placeholder
           - type: ReplaceText
