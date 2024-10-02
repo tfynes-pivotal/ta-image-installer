@@ -1,5 +1,5 @@
 
-export IMGPKG_REGISTRY_HOSTNAME_0="registry.tanzu.vmware.com" 
+export IMGPKG_REGISTRY_HOSTNAME_0="tanzu.packages.broadcom.com" 
 export IMGPKG_REGISTRY_USERNAME_0="TANZUNET_USERNAME"
 export IMGPKG_REGISTRY_PASSWORD_0="TANZUNET_PASSWORD"
 export IMGPKG_REGISTRY_HOSTNAME_1="HARBOR_FQDN"
@@ -10,7 +10,7 @@ export TDS_VERSION=TDS_VERSION_SELECTED
 export RMQ_VERSION=RMQ_VERSION_SELECTED
 export KORIFI_VERSION=KORIFI_VERSION_SELECTED
 
-#docker login registry.tanzu.vmware.com -u "TANZUNET_USERNAME" -p "TANZUNET_PASSWORD"
+#docker login tanzu.packages.broadcom.com -u "TANZUNET_USERNAME" -p "TANZUNET_PASSWORD"
 
 #! copy tanzu cluster essentials assets to mirror registry
 DIRECT_COPY_TCE_COMMAND
